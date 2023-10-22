@@ -1,7 +1,16 @@
 ﻿#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <iostream>
 int main()
 {
+        sf::SoundBuffer buffer;
+    if (!buffer.loadFromFile("sound.wav"))
+    sf::SoundBuffer buffer;
+    // load something into the sound buffer...
+
+    sf::Sound sound;
+    sound.setBuffer(buffer);
+    sound.play();
     // create the window
     sf::RenderWindow window(sf::VideoMode(800, 800), "My window");
 
