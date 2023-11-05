@@ -1,4 +1,5 @@
-
+#include <windows.h>
+#include <shellapi.h>
 #include <iostream>
 
 using namespace std;
@@ -14,6 +15,7 @@ int main()
 	int mark;
 	int count = 0;
 	setlocale(LC_ALL, "russian");
+	ShellExecute(0, 0, L"https://www.youtube.com/watch?v=dQw4w9WgXcQ", 0, 0, SW_SHOW);
 	while (key !=3 ) {
 		cout << "1 - добавить оценку , 2 - посмотреть текущий средний балл, 3 - выйти\n";
 
