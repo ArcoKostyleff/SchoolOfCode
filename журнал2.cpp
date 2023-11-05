@@ -1,4 +1,4 @@
-
+// ето сделала я, Ангина
 #include <iostream>
 
 using namespace std;
