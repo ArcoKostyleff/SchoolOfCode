@@ -1,16 +1,14 @@
-// дополни код так, чтобы вводился массив на 10 чисел и выводился (каждый элемент массива с новой строки)
-#include <________>
- 
+// дополни код так, чтобы вводился массив на 10 чисел и выводился (каждый элемент массива с новой строки) = +
+#include <iostream>
 using namespace std;
-___ main()
+int main()
 {
-    int vector[10]_
- 
-    for(int ix = _; ix < _; ___)
-    cin >> ________;
- 
-    for(___ ix = 0; ___; ___)
-    cout << ________;
- 
+    int vector[10];
+    for (int ix = 0; ix < 10; ix++){
+        cin >> vector[ix];
+    }
+    for (int ix = 0; ix < 10; ix++){
+        cout << vector[ix] << endl;
+    }
     return 0;
 }
