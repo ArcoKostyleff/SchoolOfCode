@@ -1,0 +1,29 @@
+#include <iostream>
+#include <SFML/Graphics.hpp>
+using namespace std;
+int main()
+{
+    float a, b, c = 0, h;
+    cin >> a >> b >> h;
+    c = (b - a) / 2.0;
+    sf::RenderWindow window(sf::VideoMode(800, 800), "madara");
+    sf::ConvexShape convex;
+    convex.setFillColor(sf::Color(100, 250, 50));
+    convex.setPointCount(4);
+    convex.setPosition(400, 400);
+    convex.setPoint(0, sf::Vector2f{ c*10, 0 });
+    convex.setPoint(1, sf::Vector2f{ (b-c)*10, 0});
+    convex.setPoint(2, sf::Vector2f{ b*10,h*10 });
+    convex.setPoint(3, sf::Vector2f{ 0,h*10 });
+    window.draw(convex);
+    window.display();
+    while (window.isOpen())
+    {
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+                window.close();
+        }
+    }
+}
