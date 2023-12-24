@@ -1,0 +1,51 @@
+#include <iostream>
+#include <SFML/Graphics.hpp>
+
+int main()
+{
+    /*
+	shape.setFillColor(sf::Color(219, 164, 216));
+    shape.setOutlineThickness(5);
+    shape.setPosition(800 / 2 - 160, 800 / 2  - 160);
+    
+    // sf::ContextSettings a;
+    // a.antialiasingLevel = 8;
+    shape.setOutlineColor(sf::Color(250, 0, 0));
+    window.draw(shape);
+
+    window.display();
+    */
+    /*
+    int a, b, h;
+    float c = 0;
+    c = (b - a) / 2.0;
+
+    std::cin >> h >> a >> b;
+    
+    */
+    float a, b, h, c = 0;
+    std:: cin >> a >> b >> h;
+    c = (b - a) / 2.0;
+	sf::RenderWindow window(sf::VideoMode(800, 800), "obama");
+    sf::ConvexShape convex;
+    convex.setPointCount(4);
+    convex.setPosition(400, 400);
+    convex.setPoint(0, sf::Vector2f{c*10, 0});
+    convex.setPoint(1, sf::Vector2f{(b-c)*10, 0});
+    convex.setPoint(2, sf::Vector2f{b*10, h*10});
+    convex.setPoint(3, sf::Vector2f{0, h*10});
+    convex.setFillColor(sf::Color(0, 0, 250));
+    window.draw(convex);
+
+    window.display();
+
+    while (window.isOpen())
+    {
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+                window.close();
+        }
+    }
+}
