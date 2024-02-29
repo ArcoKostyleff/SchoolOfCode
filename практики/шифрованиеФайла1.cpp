@@ -63,35 +63,73 @@ void SHA(vector<char>& file_bin, int delta) {
     }
 }
 
+void shifrate(const string& file_name, int d);
+
 int main()
 {
+    cout << "-input file name: ";
+    string file_name;
+    cin >> file_name;
+
    //1. побитово считать файл
-    fstream file("aboba.txt", fstream::in | fstream::binary );
+   
+    int r;
+    cout << "\n-input type of operation: \n\tshifrate(1) or deshifrate(2)?\n-";
+    cin >> r;
+
+    cout << "\n-input key: ";
+    int d;
+    cin >> d;
+    if (r == 2) d *= -1;
+
+    shifrate(file_name, d);
+
+}
+
+void shifrate(const string& file_name, int d)
+{
+
+    fstream file(file_name, fstream::in | fstream::binary);
     if (!file.is_open()) {
         cout << "Achtung!";
-        return 0;
-    }
-    vector<char> file_bin;
-    char tmp;
-    while (file >> tmp) {
-        file_bin.push_back(tmp);
+        return;
     }
 
-    cout << "size of file: " << file_bin.size();
+    streampos size;
+    file.seekg(0, ios::end); // прыгаем в конец файла
+    size = file.tellg(); // узнаем номер позиции (конца в нашем случае)
+    file.seekg(0, ios::beg);// возвращаемся в начало
 
-    // 2. измучать каждый байт файла (зашифровать)
-   
+    vector<char> file_bin(size);
+    //
+    char* bin = new char[size]; // создаем динамический массив чаров
+    // file.read(bin, size);
+
+    file.read(file_bin.data(), size); // читаем size байт в массив
+
+
+    /*
+        char tmp;
+        while (file >> tmp) {
+            file_bin.push_back(tmp);
+        }
+        */
+        //  cout << "size of file: " << file_bin.size();
+
+          // 2. измучать каждый байт файла (зашифровать)
+
     file.close();
 
-    SHA(file_bin, 5);
+    SHA(file_bin, d);
 
+    //file.read(file_bin.data(), _размерФайла_);
 
     // 3. записать шифрованные данные в файл
 
-    file.open("aboba.txt", fstream::out | fstream::binary);
+    file.open(file_name, fstream::out | fstream::binary);
     if (!file.is_open()) {
         cout << "Error!";
-        return 0;
+        return;
     }
 
 
