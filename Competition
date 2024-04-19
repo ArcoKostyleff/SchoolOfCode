@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+int main() 
+{
+    setlocale(LC_ALL, "russian");
+    srand(time(0));
+    int randomNum = rand() % 100 + 1;
+    int guess;
+    int attempts = 0;
+    cout << "Добро пожаловать в мою игру [Угадай число]! Я думаю о числе от 1 до 100.\n";
+    do 
+    {
+        cout << "Вводи число :) : ";
+        cin >> guess;
+        attempts++;
+        if (guess < randomNum) 
+        {
+            cout << "Слишком маленькое. Пробуй еще разок.\n";
+        }
+        else if (guess > randomNum) 
+        {
+            cout << "Слишком большое. Пробуй еще разок.\n";
+        }
+        else 
+        {
+            cout << "Поздравляю! Вы угадали число с " << attempts << " попытки!\n";
+        }
+    } while (guess != randomNum);
+    return 0;
+}
