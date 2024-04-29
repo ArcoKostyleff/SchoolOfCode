@@ -1,30 +1,87 @@
 #include <iostream>
 using namespace std;
-int main() 
-{
-    setlocale(LC_ALL, "russian");
-    srand(time(0));
-    int randomNum = rand() % 100 + 1;
-    int guess;
-    int attempts = 0;
-    cout << "Добро пожаловать в мою игру [Угадай число]! Я думаю о числе от 1 до 100.\n";
-    do 
-    {
-        cout << "Вводи число :) : ";
-        cin >> guess;
-        attempts++;
-        if (guess < randomNum) 
-        {
-            cout << "Слишком маленькое. Пробуй еще разок.\n";
-        }
-        else if (guess > randomNum) 
-        {
-            cout << "Слишком большое. Пробуй еще разок.\n";
-        }
-        else 
-        {
-            cout << "Поздравляю! Вы угадали число с " << attempts << " попытки!\n";
-        }
-    } while (guess != randomNum);
-    return 0;
+int main() {
+    setlocale(LC_ALL, "rus");
+    cout << "Выберите тему, на которубю вы хотите получить подробную информацию!" << endl;
+    cout << "1  | Структура программы" << endl;
+    cout << "2  | Переменные " << endl;
+    cout << "3  | Типы данных" << endl;
+    cout << "4  | Конструкция if-else" << endl;
+    cout << "5  | Конструкция switch-case" << endl;
+    cout << "6  | Циклы" << endl;
+    cout << "7  | Ссылки" << endl;
+    cout << "8  | Массивы" << endl;
+    cout << "9  | Многомерные массивы" << endl;
+    cout << "10 | Определение строк" << endl;
+    cout << "11 | Указатели" << endl;
+    cout << "12 | Определение и объявление функций" << endl;
+    cout << "13 | Структуры" << endl;
+    cout << "14 | Определение классов" << endl;
+    cout << "15 | Чтение и запись текстовых файлов" << endl;
+    cout << "16 | Вектор" << endl;
+    cout << "17 | Динамические массивы" << endl;
+    cout << "18 | Сортировка" << endl;
+    cout << "===================================================================" << endl;
+    cout << "Введите номер темы: " << endl;
+    int n;
+    cin >> n;
+    if (n == 1) {
+        system("explorer https://metanit.com/cpp/tutorial/2.1.php");
+    }
+    else if (n == 2) {
+        system("explorer https://metanit.com/cpp/tutorial/2.2.php");
+    }
+    else if (n == 3) {
+        system("explorer https://metanit.com/cpp/tutorial/2.3.php");
+    }
+    else if (n == 4) {
+        system("explorer https://metanit.com/cpp/tutorial/2.12.php");
+    }
+    else if (n == 5) {
+        system("explorer https://metanit.com/cpp/tutorial/2.17.php");
+    }
+    else if (n == 6) {
+        system("explorer https://metanit.com/cpp/tutorial/2.13.php");
+    }
+    else if (n == 7) {
+        system("explorer https://metanit.com/cpp/tutorial/2.14.php");
+    }
+    else if (n == 8) {
+        system("explorer https://metanit.com/cpp/tutorial/2.15.php");
+    }
+    else if (n == 9) {
+        system("explorer https://metanit.com/cpp/tutorial/2.18.php");
+    }
+    else if (n == 10) {
+        system("explorer https://metanit.com/cpp/tutorial/12.1.php");
+    }
+    else if (n == 11) {
+        system("explorer https://metanit.com/cpp/tutorial/4.1.php");
+    }
+    else if (n == 12) {
+        system("explorer https://metanit.com/cpp/tutorial/3.1.php");
+    }
+    else if (n == 13) {
+        system("explorer https://metanit.com/cpp/tutorial/5.8.php");
+    }
+    else if (n == 14) {
+        system("explorer https://metanit.com/cpp/tutorial/5.1.php");
+    }
+    else if (n == 15) {
+        system("explorer https://metanit.com/cpp/tutorial/8.3.php");
+    }
+    else if (n == 16) {
+        system("explorer https://metanit.com/cpp/tutorial/7.2.php");
+    }
+    else if (n == 17) {
+        system("explorer https://metanit.com/cpp/tutorial/4.12.php");
+    }
+    else if (n == 18) {
+        system("explorer https://metanit.com/cpp/tutorial/16.5.php");
+    }
+    else  {
+        cout << "Введите номер темы ПРАВИЛЬНО: " << endl;
+        cin >> n;
+    }
+        cout << "Возвращайся еще!" << endl;
 }
