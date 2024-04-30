@@ -1,7 +1,7 @@
 #include <iostream>
+#include <string>
 using namespace std;
-int main() {
-    setlocale(LC_ALL, "rus");
+void tems() {
     cout << "Выберите тему, на которубю вы хотите получить подробную информацию!" << endl;
     cout << "1  | Структура программы" << endl;
     cout << "2  | Переменные " << endl;
@@ -12,7 +12,7 @@ int main() {
     cout << "7  | Ссылки" << endl;
     cout << "8  | Массивы" << endl;
     cout << "9  | Многомерные массивы" << endl;
-    cout << "10 | Определение строк" << endl;
+    cout << "10 | Строки" << endl;
     cout << "11 | Указатели" << endl;
     cout << "12 | Определение и объявление функций" << endl;
     cout << "13 | Структуры" << endl;
@@ -22,7 +22,11 @@ int main() {
     cout << "17 | Динамические массивы" << endl;
     cout << "18 | Сортировка" << endl;
     cout << "===================================================================" << endl;
-    cout << "Введите номер темы: " << endl;
+    cout << "Введите номер темы или название: " << endl;
+}
+int main() {
+    setlocale(LC_ALL, "rus");
+    tems();
     int n;
     cin >> n;
     if (n == 1) {
@@ -80,8 +84,6 @@ int main() {
         system("explorer https://metanit.com/cpp/tutorial/16.5.php");
     }
     else  {
-        cout << "Введите номер темы ПРАВИЛЬНО: " << endl;
-        cin >> n;
+        return main();
     }
-        cout << "Возвращайся еще!" << endl;
 }
