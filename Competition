@@ -4,7 +4,7 @@ using namespace std;
 void tems() {
     cout << "Выберите тему, на которубю вы хотите получить подробную информацию!" << endl;
     cout << "1  | Структура программы" << endl;
-    cout << "2  | Переменные " << endl;
+    cout << "2  | Переменные" << endl;
     cout << "3  | Типы данных" << endl;
     cout << "4  | Конструкция if-else" << endl;
     cout << "5  | Конструкция switch-case" << endl;
@@ -22,68 +22,165 @@ void tems() {
     cout << "17 | Динамические массивы" << endl;
     cout << "18 | Сортировка" << endl;
     cout << "===================================================================" << endl;
-    cout << "Введите номер темы или название: " << endl;
+    cout << "Как вы хотите найти тему? [1 - по цифре] или [2 - ввести тему самому]" << endl;
+}
+void tems1() {
+    cout << "1  | Program structure (Структура программы)" << endl;
+    cout << "2  | Variables (Переменные)" << endl;
+    cout << "3  | Data types (Типы данных)" << endl;
+    cout << "4  | If-else (If-else construction)" << endl;
+    cout << "5  | Switch-case (Конструкция switch-case)" << endl;
+    cout << "6  | Cycles (Циклы)" << endl;
+    cout << "7  | Links (Ссылки)" << endl;
+    cout << "8  | Arrays (Массивы)" << endl;
+    cout << "9  | Multi arrays (Многомерные массивы)" << endl;
+    cout << "10 | Strings (Строки)" << endl;
+    cout << "11 | Pointers (Указатели)" << endl;
+    cout << "12 | Functions (Определение и объявление функций)" << endl;
+    cout << "13 | Structs (Структуры)" << endl;
+    cout << "14 | Classes (Определение классов)" << endl;
+    cout << "15 | Files (Чтение и запись текстовых файлов)" << endl;
+    cout << "16 | Vector (Вектор)" << endl;
+    cout << "17 | Dynamic arrays (Динамические массивы)" << endl;
+    cout << "18 | Sort (Сортировка)" << endl;
+    cout << "===================================================================" << endl;
+}
+void forVote() {
+    int q;
+    cin >> q;
+    if (q == 1) {
+        cout << "Введите номер темы: " << endl;
+        int n;
+        cin >> n;
+        if (n == 1) {
+            system("explorer https://metanit.com/cpp/tutorial/2.1.php");
+        }
+        else if (n == 2) {
+            system("explorer https://metanit.com/cpp/tutorial/2.2.php");
+        }
+        else if (n == 3) {
+            system("explorer https://metanit.com/cpp/tutorial/2.3.php");
+        }
+        else if (n == 4) {
+            system("explorer https://metanit.com/cpp/tutorial/2.12.php");
+        }
+        else if (n == 5) {
+            system("explorer https://metanit.com/cpp/tutorial/2.17.php");
+        }
+        else if (n == 6) {
+            system("explorer https://metanit.com/cpp/tutorial/2.13.php");
+        }
+        else if (n == 7) {
+            system("explorer https://metanit.com/cpp/tutorial/2.14.php");
+        }
+        else if (n == 8) {
+            system("explorer https://metanit.com/cpp/tutorial/2.15.php");
+        }
+        else if (n == 9) {
+            system("explorer https://metanit.com/cpp/tutorial/2.18.php");
+        }
+        else if (n == 10) {
+            system("explorer https://metanit.com/cpp/tutorial/12.1.php");
+        }
+        else if (n == 11) {
+            system("explorer https://metanit.com/cpp/tutorial/4.1.php");
+        }
+        else if (n == 12) {
+            system("explorer https://metanit.com/cpp/tutorial/3.1.php");
+        }
+        else if (n == 13) {
+            system("explorer https://metanit.com/cpp/tutorial/5.8.php");
+        }
+        else if (n == 14) {
+            system("explorer https://metanit.com/cpp/tutorial/5.1.php");
+        }
+        else if (n == 15) {
+            system("explorer https://metanit.com/cpp/tutorial/8.3.php");
+        }
+        else if (n == 16) {
+            system("explorer https://metanit.com/cpp/tutorial/7.2.php");
+        }
+        else if (n == 17) {
+            system("explorer https://metanit.com/cpp/tutorial/4.12.php");
+        }
+        else if (n == 18) {
+            system("explorer https://metanit.com/cpp/tutorial/16.5.php");
+        }
+        else {
+            cout << "Как вы хотите найти тему? [1 - по цифре] или [2 - ввести тему самому]" << endl;
+            return forVote();   
+        }
+    }
+    else if (q == 2) {
+        tems1();
+        cout << "Введите тему (на английском) из списка выше:" << endl;
+        string s;
+        cin >> s;
+        if (s == "Program structure") {
+            system("explorer https://metanit.com/cpp/tutorial/2.1.php");
+        }
+        else if (s == "Variables") {
+            system("explorer https://metanit.com/cpp/tutorial/2.2.php");
+        }
+        else if (s == "Data types") {
+            system("explorer https://metanit.com/cpp/tutorial/2.3.php");
+        }
+        else if (s == "If-else") {
+            system("explorer https://metanit.com/cpp/tutorial/2.12.php");
+        }
+        else if (s == "Switch-case") {
+            system("explorer https://metanit.com/cpp/tutorial/2.17.php");
+        }
+        else if (s == "Cycles") {
+            system("explorer https://metanit.com/cpp/tutorial/2.13.php");
+        }
+        else if (s == "Links") {
+            system("explorer https://metanit.com/cpp/tutorial/2.14.php");
+        }
+        else if (s == "Arrays") {
+            system("explorer https://metanit.com/cpp/tutorial/2.15.php");
+        }
+        else if (s == "Multi arrays") {
+            system("explorer https://metanit.com/cpp/tutorial/2.18.php");
+        }
+        else if (s == "Strings") {
+            system("explorer https://metanit.com/cpp/tutorial/12.1.php");
+        }
+        else if (s == "Pointers") {
+            system("explorer https://metanit.com/cpp/tutorial/4.1.php");
+        }
+        else if (s == "Functions") {
+            system("explorer https://metanit.com/cpp/tutorial/3.1.php");
+        }
+        else if (s == "Structs") {
+            system("explorer https://metanit.com/cpp/tutorial/5.8.php");
+        }
+        else if (s == "Classes") {
+            system("explorer https://metanit.com/cpp/tutorial/5.1.php");
+        }
+        else if (s == "Files") {
+            system("explorer https://metanit.com/cpp/tutorial/8.3.php");
+        }
+        else if (s == "Vector") {
+            system("explorer https://metanit.com/cpp/tutorial/7.2.php");
+        }
+        else if (s == "Dynamic arrays") {
+            system("explorer https://metanit.com/cpp/tutorial/4.12.php");
+        }
+        else if (s == "Sort") {
+            system("explorer https://metanit.com/cpp/tutorial/16.5.php");
+        }
+        else {
+            return forVote();
+        }
+    }
+    else {
+        cout << "Как вы хотите найти тему? [1 - по цифре] или [2 - ввести тему самому]" << endl;
+        return forVote();
+    }
 }
 int main() {
     setlocale(LC_ALL, "rus");
     tems();
-    int n;
-    cin >> n;
-    if (n == 1) {
-        system("explorer https://metanit.com/cpp/tutorial/2.1.php");
-    }
-    else if (n == 2) {
-        system("explorer https://metanit.com/cpp/tutorial/2.2.php");
-    }
-    else if (n == 3) {
-        system("explorer https://metanit.com/cpp/tutorial/2.3.php");
-    }
-    else if (n == 4) {
-        system("explorer https://metanit.com/cpp/tutorial/2.12.php");
-    }
-    else if (n == 5) {
-        system("explorer https://metanit.com/cpp/tutorial/2.17.php");
-    }
-    else if (n == 6) {
-        system("explorer https://metanit.com/cpp/tutorial/2.13.php");
-    }
-    else if (n == 7) {
-        system("explorer https://metanit.com/cpp/tutorial/2.14.php");
-    }
-    else if (n == 8) {
-        system("explorer https://metanit.com/cpp/tutorial/2.15.php");
-    }
-    else if (n == 9) {
-        system("explorer https://metanit.com/cpp/tutorial/2.18.php");
-    }
-    else if (n == 10) {
-        system("explorer https://metanit.com/cpp/tutorial/12.1.php");
-    }
-    else if (n == 11) {
-        system("explorer https://metanit.com/cpp/tutorial/4.1.php");
-    }
-    else if (n == 12) {
-        system("explorer https://metanit.com/cpp/tutorial/3.1.php");
-    }
-    else if (n == 13) {
-        system("explorer https://metanit.com/cpp/tutorial/5.8.php");
-    }
-    else if (n == 14) {
-        system("explorer https://metanit.com/cpp/tutorial/5.1.php");
-    }
-    else if (n == 15) {
-        system("explorer https://metanit.com/cpp/tutorial/8.3.php");
-    }
-    else if (n == 16) {
-        system("explorer https://metanit.com/cpp/tutorial/7.2.php");
-    }
-    else if (n == 17) {
-        system("explorer https://metanit.com/cpp/tutorial/4.12.php");
-    }
-    else if (n == 18) {
-        system("explorer https://metanit.com/cpp/tutorial/16.5.php");
-    }
-    else  {
-        return main();
-    }
+    forVote();
 }
