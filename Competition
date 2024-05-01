@@ -25,15 +25,15 @@ void tems() {
     cout << "Как вы хотите найти тему? [1 - по цифре] или [2 - ввести тему самому]" << endl;
 }
 void tems1() {
-    cout << "1  | Program structure (Структура программы)" << endl;
+    cout << "1  | Program_structure (Структура программы)" << endl;
     cout << "2  | Variables (Переменные)" << endl;
-    cout << "3  | Data types (Типы данных)" << endl;
-    cout << "4  | If-else (If-else construction)" << endl;
+    cout << "3  | Data_types (Типы данных)" << endl;
+    cout << "4  | If-else (Конструкция if-else)" << endl;
     cout << "5  | Switch-case (Конструкция switch-case)" << endl;
     cout << "6  | Cycles (Циклы)" << endl;
     cout << "7  | Links (Ссылки)" << endl;
     cout << "8  | Arrays (Массивы)" << endl;
-    cout << "9  | Multi arrays (Многомерные массивы)" << endl;
+    cout << "9  | Multi_arrays (Многомерные массивы)" << endl;
     cout << "10 | Strings (Строки)" << endl;
     cout << "11 | Pointers (Указатели)" << endl;
     cout << "12 | Functions (Определение и объявление функций)" << endl;
@@ -41,7 +41,7 @@ void tems1() {
     cout << "14 | Classes (Определение классов)" << endl;
     cout << "15 | Files (Чтение и запись текстовых файлов)" << endl;
     cout << "16 | Vector (Вектор)" << endl;
-    cout << "17 | Dynamic arrays (Динамические массивы)" << endl;
+    cout << "17 | Dynamic_arrays (Динамические массивы)" << endl;
     cout << "18 | Sort (Сортировка)" << endl;
     cout << "===================================================================" << endl;
 }
@@ -116,13 +116,13 @@ void forVote() {
         cout << "Введите тему (на английском) из списка выше:" << endl;
         string s;
         cin >> s;
-        if (s == "Program structure") {
+        if (s == "Program_structure") {
             system("explorer https://metanit.com/cpp/tutorial/2.1.php");
         }
         else if (s == "Variables") {
             system("explorer https://metanit.com/cpp/tutorial/2.2.php");
         }
-        else if (s == "Data types") {
+        else if (s == "Data_types") {
             system("explorer https://metanit.com/cpp/tutorial/2.3.php");
         }
         else if (s == "If-else") {
@@ -140,7 +140,7 @@ void forVote() {
         else if (s == "Arrays") {
             system("explorer https://metanit.com/cpp/tutorial/2.15.php");
         }
-        else if (s == "Multi arrays") {
+        else if (s == "Multi_arrays") {
             system("explorer https://metanit.com/cpp/tutorial/2.18.php");
         }
         else if (s == "Strings") {
@@ -164,7 +164,7 @@ void forVote() {
         else if (s == "Vector") {
             system("explorer https://metanit.com/cpp/tutorial/7.2.php");
         }
-        else if (s == "Dynamic arrays") {
+        else if (s == "Dynamic_arrays") {
             system("explorer https://metanit.com/cpp/tutorial/4.12.php");
         }
         else if (s == "Sort") {
