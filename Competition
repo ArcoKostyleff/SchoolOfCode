@@ -20,7 +20,6 @@ public:
         timeText.setFont(font);
         timeText.setCharacterSize(24);
         timeText.setPosition(10, 70);
-        loadTarget();
         startTimer();
         if (!hitB.loadFromFile("hit.wav")) 
         {
@@ -90,17 +89,6 @@ private:
             target.setPosition(rand() % 760 + 20, rand() % 560 + 20);
         }
          hitS.play();
-    }
-    void loadTarget() 
-    {
-        sf::Texture texture;
-        if (!texture.loadFromFile("qwe.jpg"))
-        {
-            cerr << "ERROR";
-        }
-        target.setRadius(20);
-        target.setTexture(&texture);
-        target.setPosition(400, 300);
     }
     void startTimer()
     {
