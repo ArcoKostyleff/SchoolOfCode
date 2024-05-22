@@ -17,6 +17,9 @@ public:
         shotsText.setFont(font);
         shotsText.setCharacterSize(24);
         shotsText.setPosition(10, 40);
+        timeText.setFont(font);
+        timeText.setCharacterSize(24);
+        timeText.setPosition(10, 70);
         loadTarget();
         startTimer();
         if (!hitB.loadFromFile("hit.wav")) 
@@ -25,7 +28,8 @@ public:
         }
         hitS.setBuffer(hitB);
     }
-    void run() {
+    void run() 
+    {
         while (window.isOpen())
         {
             Events();
@@ -34,7 +38,8 @@ public:
         }
     }
 private:
-    void Events() {
+    void Events() 
+    {
         sf::Event event;
         while (window.pollEvent(event))
         {
@@ -44,17 +49,22 @@ private:
                 MouseClick(event.mouseButton.x, event.mouseButton.y);
         }
     }
-    void update() {
-        if (difftime(time(0), startTime) >= prod)
+    void update() 
+    {
+        time_t currentTime = time(0);
+        int remainingTime = prod - difftime(currentTime, startTime);
+        if (remainingTime < 0) 
         {
-            // сохраняем стату
+            remainingTime = 0; 
             saveStatistics();
             window.close();
+            return;
         }
-
-        float scale = 1.0 + sin(time(0) * 0.5) * 0.5; // меняем размер мишени по синусоидальной функции
+        stringstream ss3;
+        ss3 << "Time left: " << remainingTime;
+        timeText.setString(ss3.str());
+        float scale = 1.0 + sin(time(0) * 0.5) * 0.5;
         target.setRadius(20 * scale);
-
         stringstream ss;
         ss << "Score: " << score;
         scoreText.setString(ss.str());
@@ -68,6 +78,7 @@ private:
         window.draw(target);
         window.draw(scoreText);
         window.draw(shotsText);
+        window.draw(timeText);
         window.display();
     }
     void MouseClick(int x, int y)
@@ -83,8 +94,7 @@ private:
     void loadTarget() 
     {
         sf::Texture texture;
-        texture.loadFromFile("ping.png");
-        if (!texture.loadFromFile("ping.png")) 
+        if (!texture.loadFromFile("qwe.jpg"))
         {
             cerr << "ERROR";
         }
@@ -105,7 +115,8 @@ private:
             file << "Всего выстрелов: " << shotsFired << endl;
             file.close();
         }
-        else {
+        else 
+        {
             cerr << "ERROR" << endl;
         }
     }
@@ -115,6 +126,7 @@ private:
     sf::CircleShape target;
     sf::Text scoreText;
     sf::Text shotsText;
+    sf::Text timeText;
     sf::SoundBuffer hitB;
     sf::Sound hitS;
     int score;
@@ -128,7 +140,6 @@ private:
 int main() 
 {
     setlocale(LC_ALL, "Russian");
-    srand(time(NULL));
     AimTrainer aimTrainer;
     aimTrainer.run();
     return 0;
