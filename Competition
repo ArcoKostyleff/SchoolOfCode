@@ -88,8 +88,8 @@ private:
         {
             score++;
             target.setPosition(rand() % 760 + 20, rand() % 560 + 20);
-            hitS.play();
         }
+         hitS.play();
     }
     void loadTarget() 
     {
