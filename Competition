@@ -26,6 +26,12 @@ public:
             cout << "ERROR" << endl;
         }
         hitS.setBuffer(hitB);
+        if (!texture.loadFromFile("target_texture.png")) {
+            cout << "ERROR loading texture" << endl;
+        }
+        target.setTexture(&texture);
+        target2.setTexture(&texture);
+        target3.setTexture(&texture);
     }
     void run() 
     {
@@ -64,6 +70,10 @@ private:
         timeText.setString(ss3.str());
         float scale = 1.0 + sin(time(0) * 0.5) * 0.5;
         target.setRadius(20 * scale);
+        float scale2 = 1.0 + sin(time(0) * 0.5) * 0.5;
+        target2.setRadius(20 * scale2);
+        float scale3 = 1.0 + sin(time(0) * 0.5) * 0.5;
+        target3.setRadius(20 * scale3);
         stringstream ss;
         ss << "Score: " << score;
         scoreText.setString(ss.str());
@@ -73,8 +83,10 @@ private:
     }
     void render()
     {
-        window.clear();
+        window.clear(sf::Color::Blue);
         window.draw(target);
+        window.draw(target2);
+        window.draw(target3);
         window.draw(scoreText);
         window.draw(shotsText);
         window.draw(timeText);
@@ -88,7 +100,17 @@ private:
             score++;
             target.setPosition(rand() % 760 + 20, rand() % 560 + 20);
         }
-         hitS.play();
+        else if (target2.getGlobalBounds().contains(x, y))
+        {
+            score++;
+            target2.setPosition(rand() % 760 + 20, rand() % 560 + 20);
+        }
+        else if (target3.getGlobalBounds().contains(x, y))
+        {
+            score++;
+            target3.setPosition(rand() % 760 + 20, rand() % 560 + 20);
+        }
+        hitS.play();
     }
     void startTimer()
     {
@@ -112,6 +134,8 @@ private:
     sf::RenderWindow window;
     sf::Font font;
     sf::CircleShape target;
+    sf::CircleShape target2;
+    sf::CircleShape target3;
     sf::Text scoreText;
     sf::Text shotsText;
     sf::Text timeText;
@@ -124,6 +148,7 @@ private:
     float maxRadius;
     float minRadius;
     bool pulseUp;
+    sf::Texture texture;
 };
 int main() 
 {
