@@ -163,7 +163,7 @@ private:
     }
     void saveStatistics()
     {
-        ofstream file("foo.txt");
+        ofstream file("result.txt");
         if (file.is_open())
         {
             file << "Попадания: " << score << endl;
