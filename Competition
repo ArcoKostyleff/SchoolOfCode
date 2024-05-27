@@ -74,9 +74,32 @@ public:
         }
     }
 private:
+    int readRecord()
+    {
+        ifstream file("result.txt");
+        int record = 0;
+        if (file.is_open())
+        {
+            string line;
+            while (getline(file, line))
+            {
+                if (line.find("Попадания:") == 0)
+                {
+                    record = stoi(line.substr(line.find_last_of(' ') + 1));
+                    break;
+                }
+            }
+            file.close();
+        }
+        else
+        {
+            cerr << "ERROR: Unable to open record file" << endl;
+        }
+        return record;
+    }
     void showMenu()
     {
-        if (!easyButtonTexture.loadFromFile("eaweaew.png")) 
+        if (!easyButtonTexture.loadFromFile("easy.png")) 
         {
             cout << "ERROR" << endl;
         }
@@ -84,7 +107,7 @@ private:
         {
             cout << "ERROR" << endl;
         }
-        if (!hardButtonTexture.loadFromFile("Hard.jpg")) 
+        if (!hardButtonTexture.loadFromFile("demon.png")) 
         {
             cout << "ERROR" << endl;
         }
@@ -92,6 +115,17 @@ private:
         {
             cout << "ERROR" << endl;
         }
+
+        sf::Text recordText;
+        recordText.setFont(font);
+        recordText.setCharacterSize(35);
+        recordText.setPosition(10, 50);
+
+        int record = readRecord();
+        stringstream ssRecord;
+        ssRecord << "Record: " << record;
+        recordText.setString(ssRecord.str());
+
         sf::RectangleShape selectRect(sf::Vector2f(250, 100));
         selectRect.setPosition(275, 50);
         selectRect.setTexture(&selectTexture);
@@ -140,6 +174,7 @@ private:
             }
             window.clear(sf::Color::Blue);
             window.draw(easyRect);
+            window.draw(recordText);
             window.draw(mediumRect);
             window.draw(hardRect);
             window.draw(selectRect);
