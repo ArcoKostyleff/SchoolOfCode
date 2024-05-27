@@ -6,13 +6,13 @@
 #include <sstream>
 using namespace std;
 
-class AimTrainer 
+class AimTrainer
 {
     enum Difficulty { Easy, Medium, Hard };
     Difficulty currentDifficulty;
 
 public:
-    AimTrainer() : window(sf::VideoMode(800, 600), "Aim Trainer"), font(), target(), score(0), shotsFired(0), startTime(0), prod(30), maxRadius(25), minRadius(15), pulseUp(true), currentDifficulty(Easy)
+    AimTrainer() : window(sf::VideoMode(800, 600), "Aim Trainer"), font(), target(), score(0), shotsFired(0), startTime(0), prod(30), maxRadius(25), minRadius(15), currentDifficulty(Easy)
     {
         font.loadFromFile("ArialRegular.ttf");
         scoreText.setFont(font);
@@ -25,12 +25,13 @@ public:
         timeText.setCharacterSize(24);
         timeText.setPosition(10, 70);
         startTimer();
-        if (!hitB.loadFromFile("hit.wav")) 
+        if (!hitB.loadFromFile("hit.wav"))
         {
             cout << "ERROR" << endl;
         }
         hitS.setBuffer(hitB);
-        if (!texture.loadFromFile("target_texture.png")) {
+        if (!texture.loadFromFile("target_texture.png")) 
+        {
             cout << "ERROR" << endl;
         }
         target.setTexture(&texture);
@@ -39,23 +40,22 @@ public:
     }
     void setDifficulty(Difficulty difficulty)
     {
-        // В зависимости от выбранной сложности измените параметры игры
         currentDifficulty = difficulty;
         switch (currentDifficulty)
         {
         case Easy:
             prod = 30;
             maxRadius = 25;
-            minRadius = 15;
+            minRadius = 19;
             break;
         case Medium:
-            prod = 30;
-            maxRadius = 20;
-            minRadius = 10;
+            prod = 20;
+            maxRadius = 17;
+            minRadius = 8;
             break;
         case Hard:
-            prod = 30;
-            maxRadius = 15;
+            prod = 10;
+            maxRadius = 7;
             minRadius = 5;
             break;
         default:
@@ -63,8 +63,9 @@ public:
         }
         startTimer();
     }
-    void run() 
+    void run()
     {
+        showMenu();
         while (window.isOpen())
         {
             Events();
@@ -73,6 +74,78 @@ public:
         }
     }
 private:
+    void showMenu()
+    {
+        if (!easyButtonTexture.loadFromFile("eaweaew.png")) 
+        {
+            cout << "ERROR" << endl;
+        }
+        if (!mediumButtonTexture.loadFromFile("Medium.png")) 
+        {
+            cout << "ERROR" << endl;
+        }
+        if (!hardButtonTexture.loadFromFile("Hard.jpg")) 
+        {
+            cout << "ERROR" << endl;
+        }
+        if (!selectTexture.loadFromFile("select.png"))
+        {
+            cout << "ERROR" << endl;
+        }
+        sf::RectangleShape selectRect(sf::Vector2f(250, 100));
+        selectRect.setPosition(275, 50);
+        selectRect.setTexture(&selectTexture);
+
+        sf::RectangleShape easyRect(sf::Vector2f(100, 100));
+        easyRect.setPosition(350, 200);
+        easyRect.setTexture(&easyButtonTexture);
+
+
+        sf::RectangleShape mediumRect(sf::Vector2f(100, 100));
+        mediumRect.setPosition(350, 325);
+        mediumRect.setTexture(&mediumButtonTexture);
+
+        sf::RectangleShape hardRect(sf::Vector2f(100, 100));
+        hardRect.setPosition(350, 450);
+        hardRect.setTexture(&hardButtonTexture);
+
+        sf::Font font;
+        font.loadFromFile("ArialRegular.ttf");
+
+        while (true)
+        {
+            sf::Event event;
+            while (window.pollEvent(event))
+            {
+                if (event.type == sf::Event::Closed)
+                    window.close();
+                else if (event.type == sf::Event::MouseButtonPressed)
+                {
+                    if (easyRect.getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y))
+                    {
+                        setDifficulty(Easy);
+                        return;
+                    }
+                    else if (mediumRect.getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y))
+                    {
+                        setDifficulty(Medium);
+                        return;
+                    }
+                    else if (hardRect.getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y))
+                    {
+                        setDifficulty(Hard);
+                        return;
+                    }
+                }
+            }
+            window.clear(sf::Color::Blue);
+            window.draw(easyRect);
+            window.draw(mediumRect);
+            window.draw(hardRect);
+            window.draw(selectRect);
+            window.display();
+        }
+    }
     void Events()
     {
         sf::Event event;
@@ -80,32 +153,17 @@ private:
         {
             if (event.type == sf::Event::Closed)
                 window.close();
-            else if (event.type == sf::Event::KeyReleased)
-            {
-                if (event.key.code == sf::Keyboard::Num1)
-                {
-                    setDifficulty(Easy); // Установить легкую сложность
-                }
-                else if (event.key.code == sf::Keyboard::Num2)
-                {
-                    setDifficulty(Medium); // Установить среднюю сложность
-                }
-                else if (event.key.code == sf::Keyboard::Num3)
-                {
-                    setDifficulty(Hard); // Установить тяжелую сложность
-                }
-            }
             else if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left)
                 MouseClick(event.mouseButton.x, event.mouseButton.y);
         }
     }
-    void update() 
+    void update()
     {
         time_t currentTime = time(0);
         int remainingTime = prod - difftime(currentTime, startTime);
-        if (remainingTime < 0) 
+        if (remainingTime < 0)
         {
-            remainingTime = 0; 
+            remainingTime = 0;
             saveStatistics();
             window.close();
             return;
@@ -144,16 +202,19 @@ private:
         {
             score++;
             target.setPosition(rand() % 760 + 20, rand() % 560 + 20);
+            target.move(rand() % 10 - 5, rand() % 10 - 5); 
         }
         else if (target2.getGlobalBounds().contains(x, y))
         {
             score++;
             target2.setPosition(rand() % 760 + 20, rand() % 560 + 20);
+            target2.move(rand() % 10 - 5, rand() % 10 - 5); 
         }
         else if (target3.getGlobalBounds().contains(x, y))
         {
             score++;
             target3.setPosition(rand() % 760 + 20, rand() % 560 + 20);
+            target3.move(rand() % 10 - 5, rand() % 10 - 5); 
         }
         hitS.play();
     }
@@ -170,7 +231,7 @@ private:
             file << "Всего выстрелов: " << shotsFired << endl;
             file.close();
         }
-        else 
+        else
         {
             cerr << "ERROR" << endl;
         }
@@ -192,11 +253,14 @@ private:
     int prod;
     float maxRadius;
     float minRadius;
-    bool pulseUp;
     sf::Texture texture;
+    sf::Texture easyButtonTexture;
+    sf::Texture mediumButtonTexture;
+    sf::Texture hardButtonTexture;
+    sf::Texture selectTexture;
     Difficulty difficulty;
 };
-int main() 
+int main()
 {
     setlocale(LC_ALL, "Russian");
     AimTrainer aimTrainer;
