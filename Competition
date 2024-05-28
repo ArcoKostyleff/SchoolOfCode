@@ -89,10 +89,10 @@ public:
       }
 
 private:
-      int readRecord()
+      int readpreviousattempt()
       {
           ifstream file("result.txt");
-          int record = 0;
+          int previousattempt = 0;
           if (file.is_open())
           {
               string line;
@@ -100,7 +100,7 @@ private:
               {
                   if (line.find("Попадания:") == 0)
                   {
-                      record = stoi(line.substr(line.find_last_of(' ') + 1));
+                      previousattempt = stoi(line.substr(line.find_last_of(' ') + 1));
                       break;
                   }
               }
@@ -110,7 +110,7 @@ private:
           {
               cerr << "ERROR: Unable to open record file" << endl;
           }
-          return record;
+          return previousattempt;
       }
 
       void showMenu()
@@ -135,7 +135,7 @@ private:
           previousattemptText.setFont(font);
           previousattemptText.setCharacterSize(25);
           previousattemptText.setPosition(10, 50);
-          int previousattempt = readRecord();
+          int previousattempt = readpreviousattempt();
           stringstream sspreviousattempt;
           sspreviousattempt << "previous attempt: " << previousattempt;
           previousattemptText.setString(sspreviousattempt.str());
