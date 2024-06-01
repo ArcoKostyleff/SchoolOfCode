@@ -1,0 +1,67 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+// Функция для нахождения корней уравнения
+void findDescreminant(double a, double b, double c) {
+    double D = b * b - 4 * a * c;
+
+    if (D > 0) {
+        double x1 = (-b + sqrt(D)) / (2 * a);
+        double x2 = (-b - sqrt(D)) / (2 * a);
+
+        cout << "Корни уравнения: x1 = " << x1 << ", x2 = " << x2 << endl;
+    }
+    else if (D == 0) {
+        double x = -b / (2 * a);
+
+        cout << "Уравнение имеет один корень: x = " << x << endl;
+    }
+    else {
+        cout << "Уравнение не имеет действительных корней" << endl;
+    }
+}
+// Функция для нахождения минимума или максимума функции на отрезке
+void findMinMax(double a, double b, double c, double start, double end) {
+    double  MinMax = -b / (2 * a);
+    double V = a * MinMax * MinMax + b * MinMax + c;
+
+    if (start <= MinMax && MinMax <= end) {
+        cout << "Экстремум функции на отрезке [" << start << ", " << end << "]: x = " << MinMax << ", значение = " << V << endl;
+    }
+    else {
+        cout << "На отрезке [" << start << ", " << end << "] нет экстремума функции" << endl;
+    }
+}
+
+// Функция для вычисления значений функции на отрезке
+void Otvet(double a, double b, double c, double start, double end, double step) {
+    for (double x = start; x <= end; x += step) {
+        double V = a * x * x + b * x + c;
+        cout << "f(" << x << ") = " << V << endl;
+    }
+}
+    
+int main() {
+    setlocale(LC_ALL, "Russian");
+    double a, b, c;
+
+    cout << "Введите коэффициенты квадратного уравнения (ax^2 + bx + c): ";
+    cin >> a >> b >> c;
+
+    findDescreminant(a, b, c);
+
+    double start, end;
+    cout << "Введите отрезок для поиска экстремума функции: ";
+    cin >> start >> end;
+
+    findMinMax(a, b, c, start, end);
+
+    double step;
+    cout << "Введите отрезок для вычисления значений функции (начало, конец, шаг): ";
+    cin >> start >> end >> step;
+
+    Otvet(a, b, c, start, end, step);
+
+    return 0;
+}
